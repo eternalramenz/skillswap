@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/euclid-circular-b');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  overflow: hidden;
+}
+
+/* ScrollBars */
+
+::-webkit-scrollbar {
+  width: 8px;
+}  
+
+
+
+#storiesScrollBar{
+  
+  overflow-x:hidden;
+  scroll-behavior: smooth;
+}
+
+#storiesScrollBar {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#storiesScrollBar::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+}
+
+#storiesScrollBar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 2px; 
+}
+
+#storiesScrollBar::-webkit-scrollbar-track {
+  background-color: #f1f1f1; 
+}
+
+
+
+#leftSideScrollBar {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+#leftSideScrollBar::-webkit-scrollbar {
+  width: 5px;
+}
+
+#leftSideScrollBar::-webkit-scrollbar-thumb {
+  background-color: #a9b0bd;
+  border-radius: 99px; 
+}
+
+#leftSideScrollBar::-webkit-scrollbar-track {
+  background-color: #f5f8f9; 
+}
+
+
+/* Animation */
+.custom-shimmer-body{
+  background: linear-gradient(90deg,
+  rgb(226, 228, 232) 25%,
+  rgb(245, 246, 247) 40%,
+  rgb(245, 246, 247) 75%,
+  rgb(226, 228, 232) 100%);
+  background-size: 200% 100%; 
+  animation: shimmer-body 2s infinite linear;
+}
+
+@keyframes shimmer-body {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+.custom-shimmer {
+  --light-color: linear-gradient(90deg,
+                    rgb(226, 228, 232) 25%,
+                    rgb(245, 246, 247) 40%,
+                    rgb(245, 246, 247) 75%,
+                    rgb(226, 228, 232) 100%);
+  --dark-color: linear-gradient(90deg,
+                    rgb(30, 30, 30) 25%,  /* Replace with your dark color */
+                    rgb(40, 40, 40) 40%,  /* Replace with your dark color */
+                    rgb(40, 40, 40) 75%,  /* Replace with your dark color */
+                    rgb(30, 30, 30) 100%); /* Replace with your dark color */
+  background: var(--light-color);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+.dark .custom-shimmer {
+  background: var(--dark-color);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+
+.map-container-preview{
+  width: full;
+  height: 12rem;
+  border-radius: 12px;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+.map-container-full{
+  width: full;
+  height: 40rem;
+  border-radius: 12px;
+}
+
+
