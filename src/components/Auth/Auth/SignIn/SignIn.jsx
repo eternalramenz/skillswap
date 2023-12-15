@@ -1,7 +1,7 @@
 import { useState } from "react"
 import SignInCredentials from "./SignInCredentials.jsx"
 import SignInVerification from "./SignInVerification.jsx"
-import ForgotPasswordEmail from "./ForgotPasswordEmai.jsx"
+import ForgotPasswordEmail from "./ForgotPasswordEmail.jsx"
 import ForgotPasswordVerification from './ForgotPasswordVerification.jsx'
 import ForgotPasswordNewPassword from "./ForgotPasswordNewPassword.jsx"
 const SignIn = ({ setShowSignIn }) => {

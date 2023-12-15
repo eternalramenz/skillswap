@@ -2,7 +2,6 @@ import { fetchNotificationCount, updateNotification } from '../../../redux/api/N
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { signOut } from '../../../redux/actions/AuthAction.ts';
 import { useQueryClient, useQuery } from '@tanstack/react-query';
 import SkillSwap from '../../../assets/SkillSwap.png';
 import BellIcon from "../../../icons/BellIcon.jsx"
@@ -14,18 +13,16 @@ import { debounce } from 'lodash'
 import { useGlobalContext } from '../../../contexts/GlobalContext.jsx';
 
 
-const Header = () => {
+const Header = ({setOpenMessageBox}) => {
   const initialTheme = localStorage.getItem('theme');
   const queryClient = useQueryClient()
   const { userInformation } = useSelector((state) => state.authReducer.userData)
   const [ isOpen, setIsOpen ] = useState(false)
   const [ openNotification, setOpenNotification ] = useState(false)
   const [darkMode, setDarkMode] = useState(initialTheme || 'light');
-  // const [ searchQuery, setSearchQuery] = useState('');
   const { searchQuery, setSearchQuery } = useGlobalContext();
   const [ debouncedSearchQuery, setDebouncedSearchQuery ] = useState(searchQuery);
   const navigate = useNavigate()
-  const dispatch = useDispatch()
   const dropDownRef = useRef(null);
   const searchInputRef = useRef(null);
   const notificationRef = useRef(null)
@@ -81,14 +78,6 @@ const Header = () => {
     navigate(`/home`)
   }
 
-  const handleSignOut = () => {
-    dispatch(signOut())
-    navigate('/auth')
-    queryClient.removeQueries(['notifications'])
-    queryClient.removeQueries(['pendingFollowersList'])
-    queryClient.removeQueries(['userContacts'])
-    queryClient.removeQueries(['accountInformation'])
-  }
 
   useEffect(() => {
     if (darkMode === 'dark') {
@@ -146,6 +135,7 @@ const Header = () => {
   }
 
   return (
+    
     <div className="" ref={setRefs}>
       <div className="flex 2xs:px-4 sm:px-8 md:px-24 pb-4  justify-between h-12 items-center">
         <div className='flex items-center justify-center w-[12rem]'>
@@ -265,7 +255,10 @@ const Header = () => {
                 <div className="flex items-center justify-center">
                   <hr className="border-lightGray w-10/12 dark:border-darkGray" />
                 </div>
-                <span className="ml-8 z-50 cursor-pointer text-rose-500 text-sm my-4 font-medium" onClick={handleSignOut}>
+                <span 
+                  className="ml-8 z-50 cursor-pointer text-rose-500 text-sm my-4 font-medium" 
+                  onClick={()=>setOpenMessageBox(true)}
+                >
                   Sign Out
                 </span>
               </div>

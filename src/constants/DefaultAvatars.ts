@@ -1,0 +1,8 @@
+export const Avatars = [
+  'https://images.unsplash.com/photo-1545618319-9c3c76a7d514?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHwxMzA1MTc5fHx8fHx8fDE3MDI2MDg3Mjg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=500',
+  'https://images.unsplash.com/photo-1511190316167-06d6b1317372?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHwxMzA1MTc5fHx8fHx8fDE3MDI2MDg3NzY&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=500',
+  'https://images.unsplash.com/photo-1557940724-c4b619c71af8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHwxMzA1MTc5fHx8fHx8fDE3MDI2MDg3OTg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=500',
+  'https://images.unsplash.com/photo-1653512747715-7ed1cc191042?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHwxMzA1MTc5fHx8fHx8fDE3MDI2MDg4MTI&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=500',
+  'https://images.unsplash.com/photo-1543342708-f4560c968a25?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHwxMzA1MTc5fHx8fHx8fDE3MDI2MDg4MzQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=500',
+  'https://images.unsplash.com/photo-1555518976-32763b03959d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218MHwxMzA1MTc5fHx8fHx8fDE3MDI2MDg4NTg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=500',
+]

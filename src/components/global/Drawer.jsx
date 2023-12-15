@@ -7,7 +7,7 @@ const Drawer = ({ openTradeDrawer, setOpenTradeDrawer, children }) => {
       {openTradeDrawer && (
         <div
           aria-hidden={true}
-          className="dark:bg-black/70 w-full h-full fixed z-40 backdrop-blur-sm bg-black/40 ease-in-out duration-300"
+          className="dark:bg-black/70 w-full h-full fixed z-40 backdrop-blur-sm bg-white/40  ease-in-out duration-300"
           onClick={() => setOpenTradeDrawer((prev) => !prev)}
           
         ></div>

@@ -5,6 +5,7 @@ import { useIntersection } from "@mantine/hooks";
 import { convertDate, convertWeekDay } from '../../../constants/DateConverters.ts';
 import axios from "axios";
 import Notification from "./Notification.jsx";
+import InboxIcon from "../../../icons/InboxIcon.jsx";
 
 const Notifications = ({}) => {
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
@@ -56,12 +57,14 @@ const Notifications = ({}) => {
     return acc;
   }, {});
 
+  console.log(groupedData)
   return (
-    <div className=" bg-white dark:bg-lightBlack max-h-[25rem] overflow-hidden w-80 rounded-lg ring-1 ring-lightGray dark:ring-darkGray">
+    <div className=" bg-white dark:bg-lightBlack max-h-[25rem] h-full overflow-hidden w-80 rounded-lg ring-1 ring-lightGray dark:ring-darkGray">
+
       <div className="w-full flex items-center justify-start px-4 pt-4 pb-2 bg-white dark:bg-lightBlack">
         <span className="text-xl font-main text-darkBlue font-semibold dark:text-white2">Notifications</span>
       </div>
-      <div className="overflow-y-scroll overflow-x-hidden max-h-[25rem] flex flex-col gap-4 p-4 pb-14 ">  
+      <div className="overflow-y-scroll overflow-x-hidden max-h-[25rem] h-[25rem] flex flex-col gap-4 p-4 pb-14 ">  
       {Object.entries(groupedData).map(([date, notifications], index, array) => (
         <React.Fragment key={index}>
           <div className="w-full flex items-center justify-start">
@@ -80,6 +83,14 @@ const Notifications = ({}) => {
           ))}
         </React.Fragment>
       ))}
+      {Object.keys(groupedData).length === 0 &&
+        <div className="w-full  items-center justify-center flex flex-col gap-2 h-[25rem]">
+          <div className=" h-7 w-7">
+            <InboxIcon color="stroke-gray dark:stroke-darkWhite"/>
+          </div>
+          <p className="font-main text-sm text-gray dark:text-darkWhite">No new notifications</p>
+        </div>
+      }
       </div>
     </div>
   );

@@ -15,7 +15,6 @@ const SignUp = ({setShowSignIn}) => {
   const [ dateOfBirth, setDateOfBirth ] = useState("")
   const [ confirmPassword, setConfirmPassword ] = useState("")
 
-  const [ showVerify, setShowVerify ] = useState(false);
 
 
   const newSignUpData = {
@@ -28,9 +27,9 @@ const SignUp = ({setShowSignIn}) => {
     didSetupProfile: false,
   }
   
-
   const [showEmail, setShowEmail ] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
+  const [ showVerify, setShowVerify ] = useState(false);
 
   const handleEmailNext = () =>{
     setShowEmail(false)
@@ -82,7 +81,7 @@ const SignUp = ({setShowSignIn}) => {
       </div>
       <div>
         {showVerify && 
-          <SignUpVerification userId={userId} email={email} /> 
+          <SignUpVerification userId={userId} email={email} setShowPassword={setShowPassword} setShowEmail={setShowEmail} setShowVerify={setShowVerify}/> 
         } 
       </div>
   </>

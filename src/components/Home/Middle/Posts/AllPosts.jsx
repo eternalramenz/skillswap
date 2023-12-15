@@ -42,7 +42,7 @@ const AllPosts = ({ scrollToTop, setOpenTradeDrawer, setToggleEdit, setData }) =
   if (status === 'loading') return null;
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
 
       <div className="flex flex-col ">
         {data.pages.map((page, index) => (
@@ -57,11 +57,11 @@ const AllPosts = ({ scrollToTop, setOpenTradeDrawer, setToggleEdit, setData }) =
         {isFetchingNextPage && <SkeletonPost />}
 
         {!hasNextPage && (
-          <div className="flex flex-col h-40 justify-center items-center mb-4 bg-white rounded-2xl dark:bg-lightBlack ring-1 ring-lightGray dark:ring-darkGray">
+          <div className="flex flex-col h-40 w-full justify-center items-center mb-4 bg-white rounded-2xl dark:bg-lightBlack ring-1 ring-lightGray dark:ring-darkGray">
             <div className="bg-white2">
               
             </div>
-            <span className="font-main text-darkBlue text-lg font-bold dark:text-white2">
+            <span className="font-main text-darkBlue text-lg font-bold dark:text-white2 ">
               You're completely up to date :)
             </span>
             <span className="font-main text-gray text-md font-base mb-4 dark:text-darkWhite">

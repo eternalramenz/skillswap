@@ -6,7 +6,7 @@ import { hideEmail } from '../../../../constants/Functions.ts'
 import WarningIcon from  '../../../../icons/WarningIcon.jsx';
 import SpinnerIcon from '../../../../icons/SpinnerIcon.jsx'
 
-const SignUpVerification = ({userId , email}) => {
+const SignUpVerification = ({userId , email, setShowPassword, setShowEmail, setShowVerify}) => {
   
 
   const dispatch = useDispatch()
@@ -28,6 +28,9 @@ const SignUpVerification = ({userId , email}) => {
       const res = await verifyAccountOtp(otp, userId)
       if (res.status === 200){
         setOtp("")
+        setShowPassword(false)
+        setShowEmail(false)
+        setShowVerify(false)
         dispatch({type: "AUTH_SUCCESS", data: res.data})
       }
       if (res.status  === 203){

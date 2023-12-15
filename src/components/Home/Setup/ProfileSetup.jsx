@@ -12,6 +12,7 @@ import Dropdown from '../../global/Dropdown.jsx';
 import MultiSelect from '../../global/MultiSelect.jsx';
 import GenerateIcon from '../../../icons/GenerateIcon.jsx';
 import PageLoader from '../../global/PageLoader.jsx';
+import { Avatars } from '../../../constants/DefaultAvatars.ts'
 
 const ProfileSetup = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,8 @@ const ProfileSetup = () => {
     onDrop,
   });
 
+  
+
   const handleSubmit = async (e) => {
     setLoading(true)
     e.preventDefault();
@@ -72,6 +75,10 @@ const ProfileSetup = () => {
           console.error("An error occurred:", error);
         })
       }else{
+        if (!newInformationData.profilePicture){
+          const randomIndex = Math.floor(Math.random() * Avatars.length);
+          newInformationData.profilePicture = Avatars[randomIndex]
+        }
         dispatch(setupProfile(id, newInformationData));
       }
       
