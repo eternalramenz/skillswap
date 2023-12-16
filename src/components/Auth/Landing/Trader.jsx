@@ -19,8 +19,8 @@ const Traders = ({props}) => {
     <div className="dark:bg-lightBlack/70 dark:backdrop-blur-3xl ring-1  ring-lightGray relative flex flex-col p-4 bg-card shadow-xl shadow-zinc-200 rounded-2xl gap-2 mb-1 dark:shadow-black/20 dark:ring-darkGray">
       <div className="flex items-center mt-2">
         <div className="flex pl-2 ">
-          <div className="rounded-3xl min-w-[3rem] min-h-[3rem] w-16 h-16 flex-shrink">
-            <img src={props.profilePicture} alt="" className="rounded-2xl object-cover" />
+          <div className="rounded-3xl min-w-[3rem] min-h-[3rem] w-16 h-16 flex-shrink-0">
+            <img src={props.profilePicture} alt="" className="rounded-2xl object-cover w-16 h-16 flex-shrink-0" />
           </div>
           <div className="flex flex-col pl-4">
             <div className="flex items-center">
