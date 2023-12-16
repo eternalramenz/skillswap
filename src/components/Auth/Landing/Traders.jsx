@@ -5,7 +5,7 @@ const Traders = () => {
     {
       firstName: "Buddy",
       lastName: "Castillo",
-      profilePicture: "https://scontent.fmnl33-3.fna.fbcdn.net/v/t39.30808-6/273834897_3111427999175069_4338404308830887838_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=b52GzcxS0_MAX9OYjhA&_nc_ht=scontent.fmnl33-3.fna&oh=00_AfB3y0-Xz_FJJo9zNTjC1bepagQTVUkfozgAHTmEgKWQYw&oe=6574428A",
+      profilePicture: "https://images.pexels.com/photos/839011/pexels-photo-839011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       expertise: "Data Analyst",
       skills: [
         "Data Visualization", 
@@ -21,7 +21,7 @@ const Traders = () => {
     {
       firstName: "Joshua",
       lastName: "Basilan",
-      profilePicture: "https://scontent.fmnl33-2.fna.fbcdn.net/v/t39.30808-6/327190062_562508785794199_7037371595985899164_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=m2lJUYtlJQMAX-5IimA&_nc_ht=scontent.fmnl33-2.fna&oh=00_AfBZF80T5DfDU6TaL3Hx93cJHDa8g9o7vV8ZszFrXjSy4A&oe=6574A492",
+      profilePicture: "https://images.pexels.com/photos/848117/pexels-photo-848117.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       expertise: "Quality Assurance",
       skills: [
         "Attention to Detail",
@@ -37,7 +37,7 @@ const Traders = () => {
     {
       firstName: "Ken",
       lastName: "Chang",
-      profilePicture: "https://scontent.fmnl33-4.fna.fbcdn.net/v/t39.30808-6/393754319_5540888626036260_6849162553431203533_n.jpg?stp=cp6_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=oF1XchtYKxwAX_5Kgle&_nc_ht=scontent.fmnl33-4.fna&oh=00_AfDNCX7QgCbiXGxta2vn9RrHwLr1rsZ1-kBY-cO-oopGDw&oe=657496C3",
+      profilePicture: "https://images.pexels.com/photos/1549004/pexels-photo-1549004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       expertise: "Project Manager",
       skills: [
         "Agile Methodology",
@@ -53,7 +53,7 @@ const Traders = () => {
     {
       firstName: "Sean",
       lastName: "Rinsky",
-      profilePicture: "https://scontent.fmnl33-3.fna.fbcdn.net/v/t39.30808-6/380433042_2268858719977005_4708406148470303738_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=Cu4ECM5wltgAX82C-BO&_nc_ht=scontent.fmnl33-3.fna&oh=00_AfDKoPFxro204P48KtKeLiJF_ZLWz-5CFjt_Y2-75TbMMA&oe=6573F54D",
+      profilePicture: "https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       expertise: "Civil Engineer",
       skills: [
         "Structural Design",
