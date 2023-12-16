@@ -15,10 +15,8 @@ import SettingPage from './pages/SettingPage';
 import HomeLayout from './Layout/HomeLayout';
 
 const App = () => {
-  const socket = useRef();
   const user = useSelector((state) => state.authReducer.userData);
   const didSetupProfile = user && user?.userInformation.didSetupProfile;
-  const { setOnlineUsers } = useGlobalContext()
 
 
   return (

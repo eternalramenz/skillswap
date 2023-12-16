@@ -7,7 +7,7 @@ import EyeOffIcon from '../../../../icons/EyeOffIcon.jsx';
 import WarningIcon from  '../../../../icons/WarningIcon.jsx';
 import SpinnerIcon from '../../../../icons/SpinnerIcon.jsx';
 
-const ForgotPasswordNewPassword = ({setTogglePage, userId}) => {
+const ForgotPasswordNewPassword = ({setTogglePage, userId, setEmail }) => {
   const [ newPasswordError, setNewPasswordError ] = useState("")
   const [ confirmPasswordError, setConfirmPasswordError ] = useState("")
   const [ errorMessage, setErrorMessage ] = useState(false)
@@ -82,8 +82,8 @@ const ForgotPasswordNewPassword = ({setTogglePage, userId}) => {
 
     try {
       setLoading(true)
-      const res = await forgotPassword(userId, {password: newPassword})
-      console.log(res)
+      await forgotPassword(userId, {password: newPassword})
+      setEmail("")
       setTogglePage("SignInCredentials")
     } catch (error) {
       if(error.response.status === 204){

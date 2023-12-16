@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { userChats } from '../redux/api/chatRequest';
+import { userChats } from '../redux/api/ChatRequest.ts';
 import { useQuery } from '@tanstack/react-query' 
 import { useGlobalContext } from "../contexts/GlobalContext";
 import { useQueryClient } from "@tanstack/react-query";

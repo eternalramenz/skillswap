@@ -14,7 +14,7 @@ const SignIn = ({ setShowSignIn }) => {
       { togglePage === "SignInCredentials" && <SignInCredentials setShowSignIn={setShowSignIn} setTogglePage={setTogglePage} setUserId={setUserId} email={email} setEmail={setEmail} />}
       { togglePage === "ForgotPasswordEmail" && <ForgotPasswordEmail setTogglePage={setTogglePage} email={email} setEmail={setEmail} setUserId={setUserId}/>}
       { togglePage === "ForgotPasswordVerification" && <ForgotPasswordVerification setTogglePage={setTogglePage} userId={userId} email={email}/>}
-      { togglePage === "ForgotPasswordNewPassword" && <ForgotPasswordNewPassword setTogglePage={setTogglePage} userId={userId}/>}
+      { togglePage === "ForgotPasswordNewPassword" && <ForgotPasswordNewPassword setTogglePage={setTogglePage} userId={userId} setEmail={setEmail}/>}
     </div>
   )
 }
