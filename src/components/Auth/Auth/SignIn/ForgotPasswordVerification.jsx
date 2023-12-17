@@ -23,7 +23,6 @@ const SignInVerification = ({setTogglePage, userId , email, }) => {
     try {
       setLoading(true)
       const res = await verifyAccountOtp(otp, userId)
-      console.log(res)
       if (res.status === 200){
         setOtp("")
         setTogglePage("ForgotPasswordNewPassword")

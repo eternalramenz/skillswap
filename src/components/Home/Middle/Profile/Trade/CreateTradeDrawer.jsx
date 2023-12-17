@@ -80,7 +80,6 @@ const CreateTradeDrawer = ({ openTradeDrawer, setOpenTradeDrawer}) => {
 
     try {
       const res = await createTrade(id, newTradeData)
-      console.log(res)
       const newNotificationData = {
         senderId: userInformation._id,
         entityId: res.data,
@@ -95,7 +94,6 @@ const CreateTradeDrawer = ({ openTradeDrawer, setOpenTradeDrawer}) => {
       console.log(error)
     }
     setOpenTradeDrawer((prev)=>!prev)
-    console.log(newTradeData)
   }
 
 

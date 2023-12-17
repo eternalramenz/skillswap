@@ -8,7 +8,6 @@ const SearchResults = ({props}) => {
   const handleClick = (event) => {
     event.preventDefault();
     setSearchQuery('');
-    console.log("lol")
   }
 
   return (

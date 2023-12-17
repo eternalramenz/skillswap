@@ -24,7 +24,6 @@ const SignInVerification = ({userId , email}) => {
     try {
       setLoading(true)
       const res = await verifyAccountOtp(otp, userId)
-      console.log(res)
       if (res.status === 200){
         setOtp("")
         dispatch({type: "AUTH_SUCCESS", data: res.data})

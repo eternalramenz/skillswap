@@ -13,7 +13,6 @@ import TrashIcon from '../../../../../icons/TrashIcon.jsx'
 import tagsList from '../../../../../constants/Tags.ts'
 
 const EditSection = ({setOpenPortfolioDrawer, setToggleEdit, data}) => {
-  console.log(data.thumbnail)
   const queryClient = useQueryClient()
   const { userInformation } = useSelector((state) => state.authReducer.userData)
   const [ uploadedFiles, setUploadedFiles] = useState(data.images); 
@@ -25,7 +24,6 @@ const EditSection = ({setOpenPortfolioDrawer, setToggleEdit, data}) => {
   const [ title, setTitle ] = useState(data.title)
   const [ loading ,setLoading ] = useState(false)
 
-  console.log(uploadedFiles)
   const clearForm = () => {
     setUploadedFiles([])
     setDescription('')

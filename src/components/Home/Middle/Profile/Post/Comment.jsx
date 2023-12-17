@@ -35,11 +35,9 @@ const Comment = ({comment, post}) => {
 
   const handleDelete = async () => {
     try {
-      console.log(userInformation._id, comment._id)
       const res = await deleteComment(userInformation._id, comment._id)
       queryClient.invalidateQueries(['profileComments'])
       setShowMenu((prev)=>!prev)
-      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -55,7 +53,6 @@ const Comment = ({comment, post}) => {
       const res = await updateComment(newCommentData, comment._id)
       queryClient.invalidateQueries(['profileComments'])
       setToggleEdit((prev)=>!prev)
-      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -77,7 +74,6 @@ const Comment = ({comment, post}) => {
         await createNotification(comment.userId, newNotificationData)
       }  
       queryClient.invalidateQueries(['profileComments'])
-      console.log(res)
     } catch (error) {
       console.log(error)
     }

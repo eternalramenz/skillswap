@@ -75,7 +75,6 @@ const Post = ({props,setOpenTradeDrawer, setData}) => {
     try { 
       const res = await deletePost(props._id, userInformation._id)
       queryClient.invalidateQueries(['profilePost'])
-      console.log(res)
       setToggleMenu((prev)=>!prev)
 
     } catch (error) {

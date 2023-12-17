@@ -32,7 +32,6 @@ const CompletedTrades = ({setData, setOpenTradeDrawer }) => {
     
   });
 
-  console.log(data)
 
   const lastPortfolioRef = useRef(null);
   const { ref, entry } = useIntersection({

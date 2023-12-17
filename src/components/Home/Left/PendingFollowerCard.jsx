@@ -5,7 +5,6 @@ import { useQueryClient } from '@tanstack/react-query'
 import FollowIcon from '../../../icons/FollowIcon.jsx'
 
 const PendingFollowerCard = ({props, setOpenFollowersDrawer}) => {
-  console.log(props)
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
   const queryClient = useQueryClient()
 
@@ -24,7 +23,6 @@ const PendingFollowerCard = ({props, setOpenFollowersDrawer}) => {
   }
 
   const handleAccept = async () =>{
-    console.log("clicked")
     try {
       await followAccept(props._id, userInformation._id)
       queryClient.invalidateQueries(['profileInfo'])

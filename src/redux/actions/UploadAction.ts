@@ -27,7 +27,6 @@ export const uploadPost = (data:any) => async (dispatch:Dispatch<any>)=> {
   dispatch({type: "POST_UPLOAD_START"})
   try {
     const newPost = await ProfileApi.uploadPost(data)
-    console.log(newPost)
     dispatch({type: "POST_UPLOAD_SUCCESS", data: newPost.data})
   } catch (error) {
     console.log(error)

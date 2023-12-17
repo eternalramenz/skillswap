@@ -7,8 +7,7 @@ const TimePicker = ({ setState }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [startingTime, setStartingTime] = useState(null);
   const [endingTime, setEndingTime] = useState(null);
-  console.log(startingTime);
-  console.log(endingTime);
+
 
   const generateTimes = () => {
     const time = [];

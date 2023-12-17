@@ -72,7 +72,6 @@ const SignUpInformation = ({
     }
 
     const { data } = await localSignUp(newSignUpData)
-    console.log(data)
     setUserId(data._id)
     setShowPassword(false)
     setShowVerify(true)

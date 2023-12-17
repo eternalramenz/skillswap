@@ -38,7 +38,6 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage, socket, 
       try {
         const { data } = await fetchMessages(chat.chatId);
         setMessages(data);
-        console.log(data)
       } catch (error) {
         console.log(error);
       }
@@ -72,23 +71,19 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage, socket, 
   }
 
    const receiverId = chat.members.find((member)=> member._id != currentUser);
-
     setSendMessage({...message, receiverId: receiverId._id})
     try {
       const { data } = await addMessage(message);
       setMessages([...messages, data]);
       setNewMessage("");
+    } catch (error) {
+      console.log(error)
     }
-    catch
-    {
-      console.log("error")
-    }
-    queryClient.invalidateQueries(['userChats'])  
+    queryClient.invalidateQueries(['userChats']) 
   }
 
 
   useEffect(()=> {
-    console.log("Message Arrived: ", receivedMessage)
     if (receivedMessage !== null && receivedMessage.chatId === chat.chatId) {
       setMessages([...messages, receivedMessage]);
     }
@@ -101,7 +96,6 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage, socket, 
   useEffect(() => {
     socket.current = io("https://skillswap-socket.onrender.com");
     socket.current.on("typing-message", (data) => {
-      console.log(data)
       setIsTyping(true);;
       }
     );
@@ -116,9 +110,7 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage, socket, 
     try {
       const res = await fetchMessageTrade(id)
       setTradeData(res.data[0])
-      console.log(res)
       setOpenTradeDrawer((prev)=>!prev)
-      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -147,7 +139,6 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage, socket, 
             <div className="flex flex-col h-full p-8">
               <div className="w-full h-12 flex-1" ></div>
               {messages.map((message, index) => {
-                console.log(message)
                 const showDetails = index === 0 ? true : message.senderId !== messages[index - 1]?.senderId || new Date(message.createdAt).getTime() - (new Date(messages[index - 1]?.createdAt).getTime() || 300001) > 300000;
                 return (
                   <div key={index} className={`flex ${message.senderId === currentUser ? 'justify-end' : 'justify-start'}`} ref={scrollRef}>

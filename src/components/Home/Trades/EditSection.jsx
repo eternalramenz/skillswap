@@ -28,7 +28,6 @@ const EditSection = ({ data,  setOpenTradeDrawer, setToggleEdit, toggleEdit}) =>
   });
   const [ formattedDate, setFormattedDate ] = useState(formatDateWithOrdinalNumber(new Date(data.date)))
 
-  console.log(meetingType)
   const currentDate = new Date();
   const tomorrowDate = new Date();
   tomorrowDate.setDate(currentDate.getDate() + 1); 
@@ -129,8 +128,6 @@ const EditSection = ({ data,  setOpenTradeDrawer, setToggleEdit, toggleEdit}) =>
       queryClient.invalidateQueries(['upcomingSchedules']);
       queryClient.invalidateQueries(['tradeLogs']);
       queryClient.invalidateQueries(['invitedTrades']);
-
-      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -174,8 +171,6 @@ const EditSection = ({ data,  setOpenTradeDrawer, setToggleEdit, toggleEdit}) =>
       queryClient.invalidateQueries(['invitedTrades']);
 
       queryClient.invalidateQueries(['tradeLogs']);
-
-      console.log(res)
     } catch (error) {
       console.log(error)
     }

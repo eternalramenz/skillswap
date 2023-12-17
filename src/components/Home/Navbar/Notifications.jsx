@@ -58,7 +58,6 @@ const Notifications = () => {
     return acc;
   }, {});
 
-  console.log(groupedData)
   return (
     <div className=" bg-white dark:bg-lightBlack max-h-[25rem] h-full overflow-hidden w-80 rounded-lg ring-1 ring-lightGray dark:ring-darkGray">
 

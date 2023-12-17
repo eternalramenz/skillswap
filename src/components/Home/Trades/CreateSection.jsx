@@ -27,7 +27,6 @@ const CreateSection = ({data, openTradeDrawer, setOpenTradeDrawer, setToggleEdit
   const [ latLng, setLatLng ] = useState(null);
   const [ formattedDate, setFormattedDate ] = useState(null)
   const id = userInformation._id === data.senderId ? data.receiverId : data.senderId
-  console.log(id)
   const currentDate = new Date();
   const tomorrowDate = new Date();
   tomorrowDate.setDate(currentDate.getDate() + 1); 
@@ -90,7 +89,6 @@ const CreateSection = ({data, openTradeDrawer, setOpenTradeDrawer, setToggleEdit
       console.log(error)
     }
     setOpenTradeDrawer((prev)=>!prev)
-    console.log(newTradeData)
     queryClient.refetchQueries(['allTrades'])
     queryClient.refetchQueries(['userChats'])
   }

@@ -4,7 +4,6 @@ import { useState } from 'react';
 import StarIcon from '../../../../icons/StarIcon.jsx';
 const Trader = ({ props }) => {
   const [bookMarked, setBookMarked ] = useState(false)
-  console.log(props)
 
   return (
     <Link to={`/profile/${props._id}`}>

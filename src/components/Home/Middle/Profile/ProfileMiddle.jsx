@@ -31,7 +31,6 @@ const ProfileMiddle = () => {
     setActiveTab(tab)
   }
   const scrollToTop = () =>{
-    console.log("cliked")
     postRef.current.scrollTo({top:0, left:0, behavior:'smooth'})
   }
 

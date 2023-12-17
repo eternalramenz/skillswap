@@ -51,7 +51,6 @@ const ChatPage = () => {
 
   useEffect(() => {
     socket.current.on("receive-message", (data) => {
-      console.log(data)
       setReceivedMessage(data);
       queryClient.invalidateQueries(['userChats'])
     });

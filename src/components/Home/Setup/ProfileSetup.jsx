@@ -34,10 +34,8 @@ const ProfileSetup = () => {
       const reader = new FileReader();
       reader.onload = () => {
         setPreview(reader.result); 
-        console.log(reader.result)
       };
       reader.readAsDataURL(file);
-      console.log(file)
     }
     setProfile({ file: acceptedFiles[0], url: URL.createObjectURL(acceptedFiles[0]) });
 
@@ -68,7 +66,6 @@ const ProfileSetup = () => {
         dispatch(uploadAvatarImage(data))
         .then((imageObject) => {
           newInformationData.profilePicture = imageObject.data;
-          console.log(newInformationData.profilePicture)
           dispatch(setupProfile(id, newInformationData));
         })
         .catch((error) => {

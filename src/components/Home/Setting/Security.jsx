@@ -83,7 +83,6 @@ const Security = () => {
 
     try {
       const res = await changePassword(newPasswordData)
-      console.log(res)
       if (res.status === 200){
         setOldPassword("")
         setNewPassword("")
@@ -96,7 +95,6 @@ const Security = () => {
       if (res.status  === 204){
         setOldPasswordIsTheSame(true)
       }
-      console.log(res)
     } catch (error) {
       console.log(error)
     }

@@ -11,7 +11,6 @@ import GenerateIcon from '../../../icons/GenerateIcon.jsx';
 import { createNotification } from '../../../redux/api/NotificationRequest.ts'
 
 const ReviewSection = ({ data,  setOpenTradeDrawer, setToggleEdit, toggleEdit}) => {
-  console.log(data.tradeId)
   const queryClient = useQueryClient()
   const [ comment, setComment ] = useState("")
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
@@ -22,7 +21,6 @@ const ReviewSection = ({ data,  setOpenTradeDrawer, setToggleEdit, toggleEdit}) 
   const [ isLoading, setIsLoading ] = useState(false)
 
 
-  console.log(topic)
   const autoResize = (event) => {
     const textarea = event.target;
     textarea.style.height = '20';
@@ -77,7 +75,6 @@ const ReviewSection = ({ data,  setOpenTradeDrawer, setToggleEdit, toggleEdit}) 
     }
   }, [generating, timer])
 
-  console.log(data)
   const handleGenerate = () =>{
     if(ratings > 0 && topic){    
       generateReview({

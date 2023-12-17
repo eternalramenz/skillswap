@@ -27,7 +27,6 @@ const ForgotPasswordEmail = ({setTogglePage, email, setEmail, setUserId}) => {
     try {
       setLoading(true)
       const res = await verifyAccountEmail(email.toLowerCase())
-      console.log(res.data)
       setEmail(email)
       setUserId(res.data)
       setTogglePage("ForgotPasswordVerification")

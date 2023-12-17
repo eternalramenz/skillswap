@@ -8,7 +8,6 @@ import FollowIcon from '../../../icons/FollowIcon.jsx'
 import UnfollowIcon from '../../../icons/UnfollowIcon.jsx'
 
 const ProfileFollowerCard = ({props, setOpenFollowersDrawer}) => {
-  console.log(props)
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
   const queryClient = useQueryClient()
   
@@ -90,7 +89,6 @@ const ProfileFollowerCard = ({props, setOpenFollowersDrawer}) => {
   }
 
   const { data, status } = useQuery(['followerStatus', props._id], fetchStatus);
-  console.log(data)
   if (status === 'loading' || !data) return null;
   
   return (

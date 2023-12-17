@@ -147,7 +147,6 @@ const ScheduleTracker = ({setOpenTradeDrawer, setData}) => {
             onClick={()=>{
               setOpenTradeDrawer((prev)=>!prev)
               setData(trades)
-              console.log("cliked")
             }}
           >
             <div className="flex gap-4 w-full items-center justify-center">

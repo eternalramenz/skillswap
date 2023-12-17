@@ -15,7 +15,6 @@ const EditPostSection = ({ data,  setOpenTradeDrawer}) => {
   const { userInformation } = useSelector((state)=> state.authReducer.userData)
   const [ description, setDescription ] = useState(data.description)
   const [ files, setFiles] = useState(data.images); 
-  console.log(files)
   const [ preview, setPreview] = useState(data.images); 
   const dispatch = useDispatch()
   const descriptionRef = useRef()

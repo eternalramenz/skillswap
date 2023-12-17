@@ -16,7 +16,6 @@ export const fetchProfileInfo = (id:string)=> async(dispatch:Dispatch<any>)=> {
 export const uploadPortfolioData = (data:any)=> async (dispatch:Dispatch<any>)=> {
   try{
     const res =  await ProfileApi.uploadPortfolio(data);
-    console.log(res)
   }
   catch(error){
     console.log(error)

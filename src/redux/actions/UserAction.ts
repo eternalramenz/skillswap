@@ -14,7 +14,6 @@ export const setupProfile = (id:string, payload:any)=> async (dispatch:Dispatch<
 export const generateBio = (data:any)=> async (dispatch:Dispatch<any>) => {
   try{
     const response = await UserApi.generateBio(data)
-    console.log(response.data.text)
   }
   catch(error){
     console.log(error)
@@ -57,7 +56,6 @@ export const followAcceptUser = (id:string, userId:string)=> async(dispatch:Disp
 export const unFollowUser = (id:string, userId:string)=> async(dispatch:Dispatch<any>)=> {
   try{
     await UserApi.unFollow(id, userId)
-    console.log(id)
     dispatch({type: "UNFOLLOW_USER", data: id})
   }
   catch(error){
