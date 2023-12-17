@@ -99,7 +99,7 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage, socket, 
 
 
   useEffect(() => {
-    socket.current = io("ws://skillswap-socket.onrender.com:10000");
+    socket.current = io("https://skillswap-socket.onrender.com:10000");
     socket.current.on("typing-message", (data) => {
       console.log(data)
       setIsTyping(true);;

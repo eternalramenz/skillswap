@@ -32,7 +32,7 @@ const ChatPage = () => {
 
 
   useEffect(() => {
-    socket.current = io("ws://skillswap-socket.onrender.com");
+    socket.current = io("https://skillswap-socket.onrender.com");
     socket.current.emit("connect-user", userInformation._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
