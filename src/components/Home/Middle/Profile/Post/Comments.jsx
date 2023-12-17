@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import Comment from './Comment.jsx';
 import React from 'react';
-import { fetchProfileComments } from '../../../../../redux/api/CommentRequest.js';
+import { fetchProfileComments } from '../../../../../redux/api/CommentRequest.ts';
 
 const Comments = ({ props }) => {
 
