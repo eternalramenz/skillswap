@@ -3,14 +3,14 @@ import {  useSelector } from 'react-redux/es/hooks/useSelector'
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery, useQueryClient} from '@tanstack/react-query';
 import { convertDate, convertWeekDay} from '../../../constants/DateConverters.ts'
-import axios from 'axios'
+import { fetchCancelledTrades } from '../../../redux/api/TradeRequest.ts'
 
 const CancelledTrades = ({ setData, setOpenTradeDrawer }) => {
   const queryClient = useQueryClient();
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
 
-  const fetchCancelledTrades = async ({ pageParam = 0 } = {}) =>{
-    const response =  await axios.get(`https://skillswap-server.onrender.com/trade/cancelled/${userInformation._id}?cursor=${pageParam}`)
+  const fetchData = async ({ pageParam = 0 } = {}) =>{
+    const response =  await fetchCancelledTrades(userInformation._id, pageParam)
     return response.data;
   }
   
@@ -22,7 +22,7 @@ const CancelledTrades = ({ setData, setOpenTradeDrawer }) => {
     status,
   } = useInfiniteQuery({
     queryKey: ['cancelledTrades'],
-    queryFn: fetchCancelledTrades,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;
@@ -44,7 +44,7 @@ const CancelledTrades = ({ setData, setOpenTradeDrawer }) => {
   }, [entry]);
 
   useEffect(() => {
-    fetchCancelledTrades();
+    fetchData();
     return () => {
       queryClient.removeQueries(['cancelledTrades']);
     };

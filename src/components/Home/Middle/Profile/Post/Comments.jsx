@@ -1,13 +1,15 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import Comment from './Comment.jsx';
 import React from 'react';
-import axios from 'axios';
+import { fetchProfileComments } from '../../../../../redux/api/CommentRequest.js';
 
 const Comments = ({ props }) => {
-  const fetchProfileComments = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/comment/${props._id}?cursor=${pageParam}`);
+
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchProfileComments(props._id, pageParam);
     return response.data;
   };
+
 
   const {
     data,
@@ -17,7 +19,7 @@ const Comments = ({ props }) => {
     status,
   } = useInfiniteQuery(
     ['profileComments', props],
-    fetchProfileComments,
+    fetchData,
     {
       getNextPageParam: (lastPage, pages) => {
         if (lastPage.nextCursor) {

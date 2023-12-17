@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { fetchProfilePosts } from '../../../../../redux/api/ProfileRequest.ts'
 import SkeletonPost from '../../Posts/SkeletonPost.jsx'
 import axios from 'axios'
 import Post from './Post'
@@ -8,8 +9,8 @@ import Post from './Post'
 
 const Posts = ({ scrollToTop, id, setOpenTradeDrawer, setToggleEdit, setData }) => {
 
-  const fetchProfilePost = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/profile/post/${id}?cursor=${pageParam}`);
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchProfilePosts(id, pageParam);
     return response.data;
   };
 
@@ -21,7 +22,7 @@ const Posts = ({ scrollToTop, id, setOpenTradeDrawer, setToggleEdit, setData }) 
     status,
   } = useInfiniteQuery({
     queryKey: ['profilePost', id],
-    queryFn: fetchProfilePost,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;

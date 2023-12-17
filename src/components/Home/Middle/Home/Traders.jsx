@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useIntersection } from '@mantine/hooks'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { fetchTraders } from '../../../../redux/api/TraderRequest.ts'
 import LocationIcon from '../../../../icons/LocationIcon.jsx';
 import StarIcon from '../../../../icons/StarIcon.jsx'
 import Colors from '../../../../constants/Colors.ts'
@@ -11,8 +11,8 @@ import Colors from '../../../../constants/Colors.ts'
 const Traders = () => {
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
 
-  const fetchTraders = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/trader/${userInformation._id}?cursor=${pageParam}`);
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchTraders(userInformation._id, pageParam);
     return response.data;
   };
 
@@ -24,7 +24,7 @@ const Traders = () => {
     status,
   } = useInfiniteQuery({
     queryKey: ['traders', userInformation],
-    queryFn: fetchTraders,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;

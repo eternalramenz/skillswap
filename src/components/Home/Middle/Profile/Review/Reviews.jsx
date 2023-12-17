@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { fetchReviews } from '../../../../../redux/api/ReviewRequest.js';
 import Review from './Review.jsx';
 
 const Reviews = ({ id }) => {
-  const fetchReviews = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/review/${id}?cursor=${pageParam}`);
+
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchReviews(id, pageParam);
     return response.data;
   };
 
@@ -18,7 +19,7 @@ const Reviews = ({ id }) => {
     status,
   } = useInfiniteQuery({
     queryKey: ['reviews', id],
-    queryFn: fetchReviews,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;

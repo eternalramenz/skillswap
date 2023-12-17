@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useSelector } from 'react-redux';
-import axios from 'axios'
+import { fetchFollowingPosts } from '../../../../redux/api/DiscoverRequest.ts'
 import Post from '../Profile/Post/Post.jsx'
 import SkeletonPost from './SkeletonPost.jsx'
 
@@ -10,8 +10,8 @@ const FollowingPosts = ({ scrollToTop, setOpenTradeDrawer, setToggleEdit, setDat
 
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
 
-  const fetchFollowingPost = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/post/${userInformation._id}/following?cursor=${pageParam}`);
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchFollowingPosts(userInformation._id, pageParam);
     return response.data;
   };
 
@@ -23,7 +23,7 @@ const FollowingPosts = ({ scrollToTop, setOpenTradeDrawer, setToggleEdit, setDat
     status,
   } = useInfiniteQuery({
     queryKey: ['followingPosts'],
-    queryFn: fetchFollowingPost,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;

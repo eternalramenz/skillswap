@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { fetchProfileFollowings } from '../../../redux/api/UserRequest.ts'
 import ProfileFollowingCard from './ProfileFollowingCard.jsx';
 
 
@@ -10,8 +10,8 @@ const ProfileFollowingSection = ({setOpenFollowersDrawer}) => {
   
   const { id } = useParams(); 
 
-  const fetchProfileFollowers = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/user/followings/${id}?cursor=${pageParam}`);
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchProfileFollowings(id, pageParam);
     return response.data || [];
   };
 
@@ -23,7 +23,7 @@ const ProfileFollowingSection = ({setOpenFollowersDrawer}) => {
     status,
   } = useInfiniteQuery({
     queryKey: ['profileUserFollowings', id],
-    queryFn: fetchProfileFollowers,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;

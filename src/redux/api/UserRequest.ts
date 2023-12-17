@@ -26,14 +26,20 @@ export const generateReview = (data:any) => API.post(`/user/ai/review`, data).th
   return response.data.text;
 })
 
-export const fetchPendingFollowers = (id:string, cursor: number) => API.get(`/user/followers/pending/${id}?cursor=${cursor}`)
 export const fetchSearchUsers = (query:string, cursor:number) => API.get(`/user/search?searchQuery=${query}&cursor=${cursor}`)
 
 export const fetchInformation = (id:string) => API.get(`/user/account/${id}`) 
-export const fetchPendingFollowersList = (id:string) => API.get(`/user/followers/list/${id}`)
+
 
 export const updateAccount = (id:number, data:string) => API.put(`/user/${id}`, data)
 
+export const fetchPendingFollowersList = (id:string) => API.get(`/user/followers/list/${id}`)
 
 export const fetchFollowerStatus = (userId:string, id:string) => API.get(`/user/follower/status/${userId}?id=${id}`)
 export const fetchFollowingStatus = (userId:string, id:string) => API.get(`/user/following/status/${userId}?id=${id}`)
+
+export const fetchProfileFollowings = (id:string, pageParam:number) => API.get(`/user/followings/${id}?cursor=${pageParam}`)
+export const fetchProfileFollowers = (id:string, pageParam:number) => API.get(`/user/followers/${id}?cursor=${pageParam}`)
+
+export const fetchPendingFollowers = (id:string, pageParam: number) => API.get(`/user/followers/pending/${id}?cursor=${pageParam}`)
+

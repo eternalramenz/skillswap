@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery, useQueryClient} from '@tanstack/react-query';
+import { fetchProfilePortfolios } from '../../../../../redux/api/ProfileRequest.ts'
 import Colors from '../../../../../constants/Colors.ts';
 import PortfolioDrawer from './PortfolioDrawer.jsx';
 import PortfolioSkeleton from './PortfolioSkeleton.jsx';
-import axios from 'axios';
 
 const Portfolios = ({ id }) => {
   const queryClient = useQueryClient();
@@ -22,8 +22,8 @@ const Portfolios = ({ id }) => {
 
   const [badgeColors, setBadgeColors] = useState(generateRandomColors());
 
-  const fetchPortfolios = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/profile/portfolio/${id}?cursor=${pageParam}`);
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchProfilePortfolios(id, pageParam);
     return response.data;
   };
 
@@ -35,7 +35,7 @@ const Portfolios = ({ id }) => {
     status,
   } = useInfiniteQuery({
     queryKey: ['portfolio'],
-    queryFn: fetchPortfolios,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;
@@ -55,7 +55,7 @@ const Portfolios = ({ id }) => {
   }, [entry]);
 
   useEffect(() => {
-    fetchPortfolios();
+    fetchData();
     return () => {
       queryClient.removeQueries(['portfolio']);
     };

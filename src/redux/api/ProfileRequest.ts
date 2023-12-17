@@ -10,7 +10,9 @@ API.interceptors.request.use((req) => {
   return req;
 })
 
-export const fetchPosts = (id:string) => API.get(`/profile/post/${id}`)
+export const fetchProfilePosts = (id:string, pageParam: number) => API.get(`/profile/post/${id}?cursor=${pageParam}`)
+export const fetchProfilePortfolios = (id:string, pageParam: number ) => API.get(`/profile/portfolio/${id}?cursor=${pageParam}`)
+
 export const fetchInfo = (id:string) => API.get(`/profile/${id}`)
 
 export const uploadPortfolio = (data:any) => API.post('/profile/portfolio', data)
@@ -25,3 +27,4 @@ export const uploadProfilePicture = (id:string, data:any) => API.put(`/profile/d
 
 export const uploadCoverPicture = (id:string, data:any) => API.put(`/profile/cover/${id}`, data)
 export const removeCoverPicture =(id:string) => API.put(`/profile/cover/remove/${id}`)
+

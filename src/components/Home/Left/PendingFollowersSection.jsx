@@ -2,13 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useSelector } from 'react-redux'
-import axios from 'axios';
+import { fetchPendingFollowers } from '../../../redux/api/UserRequest.ts'
 import PendingFollowerCard from './PendingFollowerCard.jsx';
 
 const PendingFollowersSection = ({setOpenFollowersDrawer}) => {
+
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
-  const fetchPendingFollowers = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/user/followers/pending/${userInformation._id}?cursor=${pageParam}`);
+  
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchPendingFollowers(userInformation._id, pageParam);
     return response.data;
   };
 
@@ -20,7 +22,7 @@ const PendingFollowersSection = ({setOpenFollowersDrawer}) => {
     status,
   } = useInfiniteQuery({
     queryKey: ['pendingFollowers', userInformation._id],
-    queryFn: fetchPendingFollowers,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;

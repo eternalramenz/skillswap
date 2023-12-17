@@ -1,20 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useIntersection } from '@mantine/hooks';
-import { convertDate, convertWeekDay } from '../../../constants/DateConverters.ts';
-import { useSelector } from 'react-redux'
+import { convertDate } from '../../../constants/DateConverters.ts';
 import { format } from 'timeago.js';
-import axios from 'axios';
+import { fetchTradeLogs } from '../../../redux/api/TradeRequest.ts'
 import SendIcon1 from '../../../icons/SendIcon-1.jsx'
 import ImageIcon1 from '../../../icons/ImageIcon-1.jsx'
 import StarIcon from '../../../icons/StarIcon.jsx'
 
 
-const TradeLogs = ({props, setOpenTradeDrawer, setData}) => {
-  const { userInformation } = useSelector((state)=>state.authReducer.userData)
+const TradeLogs = ({props}) => {
 
-  const fetchTradeLogs = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/trade/logs/${props.tradeId}?cursor=${pageParam}`);
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchTradeLogs(props.tradeId, pageParam);
     return response.data;
   };
 
@@ -26,7 +24,7 @@ const TradeLogs = ({props, setOpenTradeDrawer, setData}) => {
     status,
   } = useInfiniteQuery({
     queryKey: ['tradeLogs', props],
-    queryFn: fetchTradeLogs,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;

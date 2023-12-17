@@ -1,17 +1,18 @@
 import React, { useRef, useEffect } from "react";
+import { fetchNotifications } from "../../../redux/api/NotificationRequest.ts";
 import { useSelector } from "react-redux";
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useIntersection } from "@mantine/hooks";
-import { convertDate, convertWeekDay } from '../../../constants/DateConverters.ts';
-import axios from "axios";
+import { convertDate } from '../../../constants/DateConverters.ts';
 import Notification from "./Notification.jsx";
 import InboxIcon from "../../../icons/InboxIcon.jsx";
 
-const Notifications = ({}) => {
+const Notifications = () => {
+
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
 
-  const fetchNotifications = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/notification/${userInformation._id}?cursor=${pageParam}`);
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchNotifications(userInformation._id, pageParam);
     return response.data;
   };
 
@@ -24,7 +25,7 @@ const Notifications = ({}) => {
     status,
   } = useInfiniteQuery({
     queryKey: ['notifications', userInformation._id],
-    queryFn: fetchNotifications,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;

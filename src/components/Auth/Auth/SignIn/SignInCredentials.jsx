@@ -57,7 +57,7 @@ const SignInCredentials = ({setShowSignIn, setTogglePage, setUserId, email, setE
     }
 
     const newSignInData = {
-      email: email,
+      email: email.toLowerCase(),
       password: password
     }
     try {

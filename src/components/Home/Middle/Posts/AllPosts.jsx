@@ -1,14 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import axios from 'axios'
+import { fetchDiscoverPosts } from '../../../../redux/api/DiscoverRequest.ts'
 import Post from '../Profile/Post/Post.jsx'
 import SkeletonPost from './SkeletonPost.jsx'
 
 const AllPosts = ({ scrollToTop, setOpenTradeDrawer, setToggleEdit, setData }) => {
 
-  const fetchDiscoverPosts = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/post/discover/post?cursor=${pageParam}`);
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchDiscoverPosts(pageParam);
     return response.data;
   };
 
@@ -20,7 +20,7 @@ const AllPosts = ({ scrollToTop, setOpenTradeDrawer, setToggleEdit, setData }) =
     status,
   } = useInfiniteQuery({
     queryKey: ['discoverPosts'],
-    queryFn: fetchDiscoverPosts,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;

@@ -3,14 +3,14 @@ import {  useSelector } from 'react-redux/es/hooks/useSelector'
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery, useQueryClient} from '@tanstack/react-query';
 import { convertDate, convertWeekDay} from '../../../constants/DateConverters.ts'
-import axios from 'axios'
+import { fetchRequestsTrades } from '../../../redux/api/TradeRequest.ts'
 
 const RequestTrades = ({ setData, setOpenTradeDrawer, setToggleEdit }) => {
   const queryClient = useQueryClient();
   const { userInformation } = useSelector((state)=>state.authReducer.userData)
 
-  const fetchRequestsTrades = async ({ pageParam = 0 } = {}) =>{
-    const response =  await axios.get(`https://skillswap-server.onrender.com/trade/requested/${userInformation._id}?cursor=${pageParam}`)
+  const fetchData = async ({ pageParam = 0 } = {}) =>{
+    const response =  await fetchRequestsTrades(userInformation._id, pageParam)
     return response.data;
   }
   
@@ -22,7 +22,7 @@ const RequestTrades = ({ setData, setOpenTradeDrawer, setToggleEdit }) => {
     status,
   } = useInfiniteQuery({
     queryKey: ['requestsTrades'],
-    queryFn: fetchRequestsTrades,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;
@@ -43,7 +43,7 @@ const RequestTrades = ({ setData, setOpenTradeDrawer, setToggleEdit }) => {
   }, [entry]);
 
   useEffect(() => {
-    fetchRequestsTrades();
+    fetchData();
     return () => {
       queryClient.removeQueries(['requestsTrades']);
     };

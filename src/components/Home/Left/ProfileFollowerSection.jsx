@@ -2,13 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { fetchProfileFollowers } from '../../../redux/api/UserRequest.ts';
 import ProfileFollowerCard from './ProfileFollowerCard.jsx';
 
 const ProfileFollowerSection = ({setOpenFollowersDrawer}) => {
   const { id } = useParams(); 
-  const fetchProfileFollowers = async ({ pageParam = 0 } = {}) => {
-    const response = await axios.get(`https://skillswap-server.onrender.com/user/followers/${id}?cursor=${pageParam}`);
+
+  const fetchData = async ({ pageParam = 0 } = {}) => {
+    const response = await fetchProfileFollowers(id, pageParam);
     return response.data || [];
   };
 
@@ -20,7 +21,7 @@ const ProfileFollowerSection = ({setOpenFollowersDrawer}) => {
     status,
   } = useInfiniteQuery({
     queryKey: ['profileUserFollowers', id],
-    queryFn: fetchProfileFollowers,
+    queryFn: fetchData,
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextCursor) {
         return lastPage.nextCursor;
