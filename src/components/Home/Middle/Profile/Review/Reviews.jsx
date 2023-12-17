@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useIntersection } from '@mantine/hooks';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { fetchReviews } from '../../../../../redux/api/ReviewRequest.js';
+import { fetchReviews } from '../../../../../redux/api/ReviewRequest.ts';
 import Review from './Review.jsx';
 
 const Reviews = ({ id }) => {
