@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({baseURL: "https://skillswap-server.onrender.com"})
+const API = axios.create({baseURL: "https://skillswap-server-ev9h.onrender.com"})
 
 
 export const localSignIn = (formData:any) => API.post('/auth/signin', formData)
