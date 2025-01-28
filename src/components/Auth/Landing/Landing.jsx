@@ -10,19 +10,19 @@ const Landing = () => {
 
       <div className="flex flex-col justify-center items-center">
         <div className="-mb-4">
-          <span className="font-main font-semibold text-[4.5rem] mr-4 dark:text-white2">
+          <span className="font-main font-semibold text-[4.5rem] mr-4 dark:text-white2 tracking-tighter">
             Social Media
           </span>
-          <span className="font-main font-semibold text-[4.5rem] text-Primary">
+          <span className="font-main font-semibold text-[4.5rem] text-Primary tracking-tighter">
             Networking
           </span>
         </div>
 
         <div className="">
-          <span className="font-main font-semibold text-[4.5rem] mr-4 text-Primary">
+          <span className="font-main font-semibold text-[4.5rem] mr-4 text-Primary tracking-tighter">
             Platform
           </span>
-          <span className="font-main font-semibold text-[4.5rem] dark:text-white2" >
+          <span className="font-main font-semibold text-[4.5rem] dark:text-white2 tracking-tighter" >
             for Trading Skills
           </span>
         </div>
